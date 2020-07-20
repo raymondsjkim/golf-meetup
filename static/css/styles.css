@@ -1,3 +1,17 @@
-h1 {
-    color: red;
+header .jumbotron {
+  height: 300px;
+  margin-bottom: 0;
+  background: url(../images/background3.png) no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.bg-dark {
+  background-color: #00cc66 !important;
+}
+
+.ml-auto {
+  margin-left: 0 !important;
 }
