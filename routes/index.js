@@ -1,5 +1,8 @@
 const express = require('express');
 
+const golfersRoute = require('./golfers');
+const reviewRoute = require('./review');
+
 const router = express.Router();
 
 module.exports = () => {
@@ -7,5 +10,9 @@ module.exports = () => {
   router.get('/', (request, response) => {
     response.render('pages/index', { pageTitle: 'Welcome' });
   });
+
+  router.use('/golfers', golfersRoute());
+  router.use('/review', reviewRoute());
+
   return router;
 };

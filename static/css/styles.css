@@ -1,6 +1,6 @@
 header .jumbotron {
   height: 300px;
-  margin-top: 32px;
+  margin-top: 55px;
   margin-bottom: 0;
   background: url(../images/background3.png) no-repeat;
   -webkit-background-size: cover;
@@ -22,7 +22,7 @@ nav.navbar.navbar.navbar-expand-md.navbar-dark.bg-dark {
 
 @media (max-width: 576px) {
   main.main {
-    margin-top: 32px;
+    margin-top: 55px;
   }
 }
 
