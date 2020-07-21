@@ -2,9 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
-module.exports = () => {
-  router.get('/', (request, response) => {
-    return response.send('Golfers List');
+module.exports = (params) => {
+  const { golferService } = params;
+
+  router.get('/', async (request, response) => {
+    const golfers = await golferService.getList();
+    return response.json(golfers);
   });
 
   router.get('/:shortname', (request, response) => {

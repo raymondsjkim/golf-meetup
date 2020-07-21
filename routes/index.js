@@ -5,14 +5,14 @@ const reviewRoute = require('./review');
 
 const router = express.Router();
 
-module.exports = () => {
+module.exports = (params) => {
   // route homepage
   router.get('/', (request, response) => {
     response.render('pages/index', { pageTitle: 'Welcome' });
   });
 
-  router.use('/golfers', golfersRoute());
-  router.use('/review', reviewRoute());
+  router.use('/golfers', golfersRoute(params));
+  router.use('/review', reviewRoute(params));
 
   return router;
 };
