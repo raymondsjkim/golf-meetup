@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
+const cookieSession = require('cookie-session');
 
+// services for json data
 const ReviewService = require('./services/ReviewService');
 const GolferService = require('./services/GolferService');
 
@@ -12,11 +14,23 @@ const routes = require('./routes');
 const app = express();
 const port = 4000;
 
+// set cookie-session
+app.set('trust proxy', 1);
+app.use(
+  cookieSession({
+    name: 'session',
+    keys: ['BjnkNJnNKJN&y&TVh6T6', 'jnnJNnuh87UuhIUh87yt'],
+  })
+);
+
+// set ejs
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 
+// serve static files with express static middleware
 app.use(express.static(path.join(__dirname, './static')));
 
+// set routes
 app.use(
   '/',
   routes({
