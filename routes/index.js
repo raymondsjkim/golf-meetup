@@ -9,9 +9,17 @@ module.exports = (params) => {
   const { golferService } = params;
 
   // route homepage
-  router.get('/', async (request, response) => {
-    const topGolfers = await golferService.getList();
-    response.render('pages/index', { pageTitle: 'Welcome', template: 'index', topGolfers });
+  router.get('/', async (request, response, next) => {
+    try {
+      const topGolfers = await golferService.getList();
+      return response.render('pages/index', {
+        pageTitle: 'Welcome',
+        template: 'index',
+        topGolfers,
+      });
+    } catch (error) {
+      return next(error);
+    }
   });
   // route golfers page
   router.use('/golfers', golfersRoute(params));
