@@ -1,0 +1,37 @@
+<%- include('../includes/header.ejs') %>
+
+<main class="main">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-8">
+        <article class="speakerslist maincontent">
+          <% golfers.forEach(function(golfer){%>
+          <div class="mb-4">
+            <h4 class="speakerslist-title"><%= golfer.title %></h4>
+            <div class="speakerslist-name">
+              with
+              <a href="/golfers/<%= golfer.shortname %>"><%= golfer.name %></a>
+            </div>
+            <div class="row speakerslist-info mt-2">
+              <div class="col-sm-3">
+                <a href="/golfers/<%= golfer.name %>">
+                  <img
+                    class="speakerslist-img rounded-circle img-fluid"
+                    src="/images/<%= golfer.shortname %>.jpg"
+                    alt="Photo of <%= golfer.name %> Post"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-9">
+                <%= golfer.summary %>
+              </div>
+            </div>
+          </div>
+          <%}) %>
+        </article>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../includes/footer.ejs') %>

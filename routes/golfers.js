@@ -7,11 +7,16 @@ module.exports = (params) => {
 
   router.get('/', async (request, response) => {
     const golfers = await golferService.getList();
-    return response.json(golfers);
+    response.render('pages/golfers', { pageTitle: 'Golfers', template: 'golfers', golfers });
   });
 
-  router.get('/:shortname', (request, response) => {
-    return response.send(`Detail page of ${request.params.shortname}`);
+  router.get('/:shortname', async (request, response) => {
+    const golfer = await golferService.getGolfer(request.params.shortname);
+    response.render('pages/golfer-detail', {
+      pageTitle: 'Golfer',
+      template: 'golfer-detail',
+      golfer,
+    });
   });
 
   return router;

@@ -1,0 +1,25 @@
+<%- include('../includes/header.ejs') %>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <article class="speakerslist maincontent">
+        <h1 class="speakerslist-title"><%= golfer.title %></h1>
+        <div class="speakerslist-name">
+          with
+          <a href="/golfers/<%= golfer.shortname %>"><%= golfer.name %></a>
+        </div>
+        <p class="speakerslist-info mt-2">
+          <a href="/golfers/<%= golfer.shortname %>"> </a>
+          <img
+            class="speakerslist-img img-fluid"
+            src="/images/<%= golfer.shortname %>.jpg"
+            alt="Photo of <%= golfer.name %>"
+          />
+        </p>
+
+        <%- golfer.description %>
+      </article>
+    </div>
+  </div>
+</div>
+<%- include('../includes/footer.ejs') %>

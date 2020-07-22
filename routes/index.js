@@ -11,7 +11,6 @@ module.exports = (params) => {
   // route homepage
   router.get('/', async (request, response) => {
     const topGolfers = await golferService.getList();
-
     response.render('pages/index', { pageTitle: 'Welcome', template: 'index', topGolfers });
   });
   // route golfers page
