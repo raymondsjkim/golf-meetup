@@ -58,7 +58,7 @@ class GolferService {
       return elm.shortname === shortname;
     });
     if (!golfer || !golfer.scorecard) return null;
-    return golfer.artwork;
+    return golfer.scorecard;
   }
 
   /**

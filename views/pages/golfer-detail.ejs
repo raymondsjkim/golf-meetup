@@ -20,6 +20,18 @@
         <%- golfer.description %>
       </article>
     </div>
+    <aside class="col-md-4">
+      <article class="sidebar">
+        <p class="sidebar-body">
+          Scorecards:
+        </p>
+        <div class="pixgrid clearfix">
+          <% scorecards.forEach(function(scorecard, key) {%>
+          <img src="/images/<%= scorecard %>" alt="Scorecard_<%=key%>" />
+          <%}) %>
+        </div>
+      </article>
+    </aside>
   </div>
 </div>
 <%- include('../includes/footer.ejs') %>

@@ -12,10 +12,13 @@ module.exports = (params) => {
 
   router.get('/:shortname', async (request, response) => {
     const golfer = await golferService.getGolfer(request.params.shortname);
+    const scorecards = await golferService.getScorecardForSpeaker(request.params.shortname);
+    console.log(scorecards);
     response.render('pages/golfer-detail', {
       pageTitle: 'Golfer',
       template: 'golfer-detail',
       golfer,
+      scorecards,
     });
   });
 
