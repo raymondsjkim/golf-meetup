@@ -6,12 +6,17 @@ const reviewRoute = require('./review');
 const router = express.Router();
 
 module.exports = (params) => {
-  // route homepage
-  router.get('/', (request, response) => {
-    response.render('pages/index', { pageTitle: 'Welcome' });
-  });
+  const { golferService } = params;
 
+  // route homepage
+  router.get('/', async (request, response) => {
+    const topGolfers = await golferService.getList();
+
+    response.render('pages/index', { pageTitle: 'Welcome', template: 'index', topGolfers });
+  });
+  // route golfers page
   router.use('/golfers', golfersRoute(params));
+  // route review page
   router.use('/review', reviewRoute(params));
 
   return router;

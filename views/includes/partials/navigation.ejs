@@ -9,7 +9,7 @@
     >
       <span class="sr-only">Toggle navigation</span> &#x2630;
     </button>
-    <a href="/" class="navbar-brand">Golf Meetups</a>
+    <a href="/" class="navbar-brand"><%= siteName %></a>
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
@@ -29,9 +29,9 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/golfers">All Golfers</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Ray</a>
-            <a class="dropdown-item" href="#">Tiger</a>
-            <a class="dropdown-item" href="#">Rory</a>
+            <% golferNames.forEach(function (golfer) {%>
+            <a class="dropdown-item" href="/golfers/<%= golfer.shortname %>"><%= golfer.name %></a>
+            <%}) %>
           </div>
         </li>
         <li class="nav-item"><a href="/review" class="nav-link">Review</a></li>

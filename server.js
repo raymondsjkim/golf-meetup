@@ -27,8 +27,20 @@ app.use(
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 
+app.locals.siteName = 'GOLF Meetups';
+
 // serve static files with express static middleware
 app.use(express.static(path.join(__dirname, './static')));
+
+app.use(async (request, response, next) => {
+  try {
+    const names = await golferService.getNames();
+    response.locals.golferNames = names;
+    return next();
+  } catch (error) {
+    return next(error);
+  }
+});
 
 // set routes
 app.use(
