@@ -8,7 +8,11 @@ module.exports = (params) => {
   router.get('/', async (request, response, next) => {
     try {
       const reviews = await reviewService.getList();
-      return response.json(reviews);
+      return response.render('pages/reviews', {
+        pageTitle: 'Review',
+        template: 'reviews',
+        reviews,
+      });
     } catch (error) {
       return next(error);
     }

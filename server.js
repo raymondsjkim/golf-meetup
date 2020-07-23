@@ -59,11 +59,14 @@ app.use((request, response, next) => {
 
 app.use((error, request, response, next) => {
   response.locals.message = error.message;
-  // console.error(error);
-  const status = error.status || 500;
-  response.locals.status = status;
-  response.status(status);
-  response.render('error');
+  if (response.locals.message) {
+    const status = error.status || 500;
+    response.locals.status = status;
+    response.status(status);
+    response.render('error');
+  } else {
+    next();
+  }
 });
 
 app.listen(port, () => {

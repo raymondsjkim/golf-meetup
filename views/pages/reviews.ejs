@@ -1,0 +1,29 @@
+<%- include('../includes/header.ejs') %>
+
+<main class="main">
+  <h1>Recent Reviews</h1>
+
+  <% reviews.forEach(function(review) {%>
+
+  <aside class="col-md-8">
+    <div class="maincontent feedback">
+      <div class="feedback-items">
+        <div class="feedback-item item-list media-list">
+          <div class="feedback-item media">
+            <div class="feedback-info media-body">
+              <div class="feedback-head">
+                <div class="feedback-title"><%= review.title %></div>
+                <small>by <%= review.name %></small>
+              </div>
+              <div class="feedback-message"><%= review.message %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <%}) %>
+</main>
+
+<%- include('../includes/footer.ejs') %>
