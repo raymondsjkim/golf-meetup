@@ -21,7 +21,7 @@ module.exports = (params) => {
       return next(error);
     }
   });
-  // route golfers page
+  // route golfers list page
   router.use('/golfers', golfersRoute(params));
   // route review page
   router.use('/review', reviewRoute(params));

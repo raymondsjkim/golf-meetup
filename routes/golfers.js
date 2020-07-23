@@ -18,6 +18,7 @@ module.exports = (params) => {
     }
   });
 
+  // route golfer page
   router.get('/:shortname', async (request, response) => {
     const golfer = await golferService.getGolfer(request.params.shortname);
     const scorecards = await golferService.getScorecardForSpeaker(request.params.shortname);

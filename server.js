@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
+const createError = require('http-errors');
 
 // services for json data
 const ReviewService = require('./services/ReviewService');
@@ -50,6 +51,20 @@ app.use(
     golferService,
   })
 );
+
+// set error handler
+app.use((request, response, next) => {
+  return next(createError(404, 'File not found'));
+});
+
+app.use((error, request, response, next) => {
+  response.locals.message = error.message;
+  // console.error(error);
+  const status = error.status || 500;
+  response.locals.status = status;
+  response.status(status);
+  response.render('error');
+});
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
