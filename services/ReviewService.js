@@ -25,7 +25,7 @@ class ReviewService {
   }
 
   /**
-   * Add a new feedback item
+   * Add a new review item
    * @param {*} name The name of the user
    * @param {*} title The title of the review message
    * @param {*} message The review message

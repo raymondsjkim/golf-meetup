@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const createError = require('http-errors');
+const bodyParser = require('body-parser');
 
 // services for json data
 const ReviewService = require('./services/ReviewService');
@@ -23,6 +24,10 @@ app.use(
     keys: ['BjnkNJnNKJN&y&TVh6T6', 'jnnJNnuh87UuhIUh87yt'],
   })
 );
+
+// set body parser to parse to json from POST request
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // set ejs
 app.set('view engine', 'ejs');
