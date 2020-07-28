@@ -51,13 +51,13 @@ module.exports = (params) => {
       request.session.review = {
         message: 'Thank you for your review!',
       };
-
       return response.redirect('/review');
     } catch (error) {
       return next(error);
     }
   });
 
+  // REST endpoint
   router.post('/api', validations, async (request, response, next) => {
     try {
       const errors = validationResult(request);
